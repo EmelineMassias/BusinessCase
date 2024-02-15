@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le Vêtement
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Modifier le vêtement</h1>
+
+		{{ include('admin_vetements/_form.html.twig', {'button_label': 'Update'}) }}
+
+		<a id="btn" class="mt-3 btn btn-lg btn-block" href="{{ path('app_admin_vetements_index') }}">Retour au listing</a>
+	</div>
+{% endblock %}

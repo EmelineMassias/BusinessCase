@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vetements index
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href=" {{ asset('libs/datatables/css/datatables.css') }} ">
+	<link rel="stylesheet" href=" {{ asset('libs/datatables/css/datatables-bootstrap5.min.css') }} ">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Vêtements</h1>
+		<table id="category_list" class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Libelle</th>
+					<th>Description</th>
+					<th>Catégorie</th>
+					<th>Prix</th>
+					<th>Image</th>
+					<th>Prestation</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for vetement in vetements %}
+					<tr>
+						<td>{{ vetement.id }}</td>
+						<td>{{ vetement.libelle }}</td>
+						<td>{{ vetement.description }}</td>
+						<td> {{ vetement.category.libelle }}</td>
+						<td>{{ vetement.prix }}</td>
+						<td><img style="width:100px; height:100px;" src="{{ asset('uploads/imagesVetement/' ~ vetement.image) }}"></td>
+						<td>{{ vetement.prestation ? vetement.prestation|join(', ') : ''}}</td>
+						<td>
+							<a href="{{ path('app_admin_vetements_show', {'id': vetement.id}) }}">voir</a><br>
+							<a href="{{ path('app_admin_vetements_edit', {'id': vetement.id}) }}">modifier</a>
+							{{ include('admin_vetements/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">Aucun vêtement trouvé</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a id="btn" class="mt-3 btn btn-lg btn-block" href="{{ path('app_admin_vetements_new') }}">Ajouter un vêtement</a>
+	</div>
+
+	{% block javascripts %}
+
+		<script rel="scripts" src="{{ asset('libs/datatables/jquery/jquery.js') }}"></script>
+		<script rel="scripts" src="{{ asset('libs/datatables/jquery/jquery-datatables.js') }}"></script>
+		<script rel="scripts" src="{{ asset('libs/datatables/jquery/datatables-bootstrap5.min.js') }}"></script>
+		<script rel="scripts" src="{{ asset('js/category/init-dt.js') }}"></script>
+	{% endblock %}
+{% endblock %}

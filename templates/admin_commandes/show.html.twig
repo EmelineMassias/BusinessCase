@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commandes
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Commandes #{{ commande.id }}</h1>
+
+		<table id="category_list" class="table table-striped">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ commande.id }}</td>
+				</tr>
+				<tr>
+					<th>Detail</th>
+					<td>
+						{% for vetement in commande.getVetementsId() %}
+							{{ vetement.libelle }}<br>
+						{% endfor %}
+					</td>
+				</tr>
+				<tr>
+					<th>Prix Total en €</th>
+					<td>{{ commande.total }}</td>
+				</tr>
+
+				<tr>
+					<th>Client</th>
+					<td>
+						{% for user in commande.getUserId() %}
+							{{ user.prenom}}
+							{{ user.nom }}
+						{% endfor %}
+					</td>
+				</tr>
+
+				<tr>
+					<th>Statut</th>
+					<td>{{ commande.statut ? commande.statut|join(', ') : ''}}</td>
+
+				</tr>
+			</tbody>
+		</table>
+
+		<a id="btn" class="mt-3 btn btn-lg btn-block" href="{{ path('app_admin_commandes_index') }}">Retour au listing</a>
+
+
+	</div>
+{% endblock %}

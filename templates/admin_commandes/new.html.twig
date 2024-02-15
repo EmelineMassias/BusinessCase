@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Commande{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Ajouter une nouvelle commande</h1>
+
+    {{ include('admin_commandes/_form.html.twig') }}
+
+    <a <a id="btn" class="mt-3 btn btn-lg btn-block" href="{{ path('app_admin_commandes_index') }}">Retour au listing</a>
+    </div>
+{% endblock %}

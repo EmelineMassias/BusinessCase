@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Commandes
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Modifier la Commande</h1>
+
+		{{ include('admin_commandes/_form.html.twig', {'button_label': 'Update'}) }}
+
+		<a id="btn" class="mt-3 btn btn-lg btn-block" href="{{ path('app_admin_commandes_index') }}">Retour au listing</a>
+
+	</div>
+{% endblock %}

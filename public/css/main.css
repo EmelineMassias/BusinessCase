@@ -1,0 +1,42 @@
+h5 {
+
+    font-family: 'Bowlby One', sans-serif;
+    color: #AE9A88;
+}
+
+label {
+
+    font-family: 'Inter', sans-serif;
+    color: #AE9A88;
+}
+
+.text-muted {
+    font-family: 'Inter', sans-serif !important;
+    color: #6A5A4C !important;
+}
+
+nav {
+    background-color: #F1EFE7;
+
+}
+
+a {
+    color: #AE9A88 !important;
+    font-family: 'Bowlby One', sans-serif;
+}
+
+h1 {
+    color: #AE9A88 !important;
+    font-family: 'Bowlby One', sans-serif;
+}
+
+body {
+    background-color: #F1EFE7 !important;
+}
+
+#btn {
+    background-color: #AE9A88;
+    color: #F1EFE7 !important;
+    font-family: 'Inter', sans-serif !important;
+
+}

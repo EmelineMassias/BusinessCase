@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Catégories</h1>
+
+		<table id="category_list" class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Libelle</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ category.id }}</td>
+					<td>{{ category.libelle }}</td>
+					<td>
+
+						<a href="{{ path('app_admin_category_edit', {'id': category.id}) }}">modifier</a>
+
+						{{ include('admin_category/_delete_form.html.twig') }}
+
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a id="btn" class="mt-3 btn btn-lg btn-block" href="{{ path('app_admin_category_index') }}">Retour au listing</a>
+
+
+	</div>
+{% endblock %}

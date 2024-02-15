@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category index
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href=" {{ asset('libs/datatables/css/datatables.css') }} ">
+	<link rel="stylesheet" href=" {{ asset('libs/datatables/css/datatables-bootstrap5.min.css') }} ">
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Catégories</h1>
+
+		<table id="category_list" class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Libellé</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for category in categories %}
+					<tr>
+						<td>{{ category.id }}</td>
+						<td>{{ category.libelle }}</td>
+						<td>
+							<a href="{{ path('app_admin_category_show', {'id': category.id}) }}">voir</a><br>
+							<a href="{{ path('app_admin_category_edit', {'id': category.id}) }}">modifier</a>
+                            {{ include('admin_category/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">Aucune catégorie trouvée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a id="btn" class="mt-3 btn btn-lg btn-block" href="{{ path('app_admin_category_new') }}">Ajouter une catégorie</a>
+	</div>
+
+	{% block javascripts %}
+
+		<script rel="scripts" src="{{ asset('libs/datatables/jquery/jquery.js') }}"></script>
+		<script rel="scripts" src="{{ asset('libs/datatables/jquery/jquery-datatables.js') }}"></script>
+		<script rel="scripts" src="{{ asset('libs/datatables/jquery/datatables-bootstrap5.min.js') }}"></script>
+		<script rel="scripts" src="{{ asset('js/category/init-dt.js') }}"></script>
+	{% endblock %}
+
+{% endblock %}

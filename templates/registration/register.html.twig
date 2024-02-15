@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+
+	<section style="background-color: #F1EFE7;">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+			<div class="col col-xl-10">
+				<div class="card" style="border-radius: 1rem; box-shadow: 10px 10px 10px 10px #AE9A88">
+					<div class="row g-0">
+
+						<div class="col-md-6 col-lg-5 d-none d-md-block">
+							<img src="{{ asset('/images/img-login.jpg') }}" style="height:100%; border-radius: 1rem 0rem 0rem 1rem;" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;"/>
+						</div>
+						<div class="col-md-6 col-lg-7 d-flex align-items-center" style="background-color: #F1EFE7;">
+							<div class="card-body p-4 p-lg-5 text-black">
+
+								{{ form_start(registrationForm) }}
+
+								<div class="d-flex align-items-center mb-3 pb-1">
+									<span class="h1 fw-bold mb-0"><img src="{{ asset('/images/logo200-svg.png') }}"></span>
+								</div>
+
+								<h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Créer un compte</h5>
+
+								<div class="form-outline mb-4">
+									{{ form_row(registrationForm.email) }}
+								</div>
+
+								<div class="form-outline mb-4">
+									{{ form_row(registrationForm.plainPassword, {
+                                                label: 'Password'
+                                            }) }}
+								</div>
+
+								<div class="form-outline mb-4">
+									{{ form_row(registrationForm.nom) }}
+								</div>
+
+								<div class="form-outline mb-4">
+									{{ form_row(registrationForm.prenom) }}
+								</div>
+
+								<div class="form-outline mb-4">
+									{{ form_row(registrationForm.agreeTerms) }}
+								</div>
+
+								<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+								<div class="pt-1 mb-4">
+									<button class="btn btn-lg btn-block" type="submit" style="background-color: #AE9A88; color: #F1EFE7;">Créer mon compte</button>
+								</div>
+
+								<a href="#!" class="small text-muted">Terms of use.</a>
+								<a href="#!" class="small text-muted">Privacy policy</a>
+								{{ form_end(registrationForm) }}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>{% endblock %}
